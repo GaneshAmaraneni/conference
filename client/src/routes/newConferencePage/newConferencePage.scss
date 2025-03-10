@@ -1,0 +1,126 @@
+.new-conference-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  .form-container {
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: start;
+    }
+
+    .form-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .form-item {
+        margin-bottom: 20px;
+
+        label {
+          display: block;
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+          margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 12px;
+          font-size: 16px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+          outline: none;
+          transition: border 0.3s;
+
+          &:focus {
+            border-color: #4f9dff;
+          }
+        }
+
+        textarea {
+          resize: vertical;
+          height: 150px;
+        }
+      }
+
+      .guest-speakers,
+      .topics {
+        margin-bottom: 20px;
+        .nested-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          input {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 14px;
+          }
+          button {
+            margin-bottom: 10px;
+            background: #ff4d4d;
+            border: none;
+            padding: 6px 12px;
+            color: #fff;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: #ff3333;
+            }
+          }
+        }
+
+        button {
+          background: #4f9dff;
+          border: none;
+          padding: 5px 10px;
+          color: #fff;
+          margin-left: 5px;
+          font-size: 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          margin-top: 10px;
+        }
+      }
+
+      .submit-button {
+        background: #28a745;
+        border: none;
+        padding: 12px 20px;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+        margin-top: 20px;
+
+        &:hover {
+          background-color: #218838;
+        }
+      }
+
+      .error-message {
+        color: #ff4d4d;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 10px;
+      }
+    }
+  }
+}

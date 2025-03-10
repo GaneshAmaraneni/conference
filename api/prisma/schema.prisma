@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Conference {
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
+  title          String           @db.String
+  description    String?          @db.String
+  venue          String?          @db.String
+  program        String?          @db.String
+  author         User             @relation("AuthorOfConference", fields: [authorId], references: [id])
+  authorId       String           @db.ObjectId
+  startDate      DateTime?        @map("start_date") @db.Timestamp
+  endDate        DateTime?        @map("end_date") @db.Timestamp
+  accepting      Boolean          @default(true)
+  creationDate   DateTime?        @default(now())
+  price          Float?           @default(0.0)
+  guestSpeakers  String[]         @default([])
+  topics         String[]         @default([])
+  registrations  Registration[]   @relation("ConferenceRegistrations") // Relationship to registrations
+  upiId          String         @db.String
+  bankName       String         @db.String
+  accountName    String         @db.String
+  ifscCode       String         @db.String
+  branch         String         @db.String
+  externalUrl    String?         @db.String
+}
+
+model User {
+  id             String           @id @default(auto()) @map("_id") @db.ObjectId
+  email          String           @unique
+  username       String           @unique
+  password       String
+  createdAt      DateTime         @default(now())
+  role           String           @default("attendee") // attendee or admin
+  authored       Conference[]     @relation("AuthorOfConference")
+  registrations  Registration[]   @relation("UserRegistrations") 
+}
+
+model Registration {
+  id                  String              @id @default(auto()) @map("_id") @db.ObjectId
+  conference          Conference          @relation("ConferenceRegistrations", fields: [conferenceId], references: [id])
+  conferenceId        String              @db.ObjectId
+  user                User?                @relation("UserRegistrations", fields: [userId], references: [id])
+  userId              String?              @db.ObjectId
+  approved            Boolean             @default(false)
+  registrationDate    DateTime            @default(now())
+  registrationDetail  RegistrationDetail? 
+}
+
+model RegistrationDetail {
+  id                 String       @id @default(auto()) @map("_id") @db.ObjectId
+  registration       Registration @relation(fields: [registrationId], references: [id])
+  registrationId     String       @unique @db.ObjectId
+
+  email              String      
+  fullName           String      
+  gender             String      
+  participationMode  String      // Mode of participation (e.g., online, in-person)
+  mobileNumber       String      
+  identityCardUrl    String      
+  transactionDate    DateTime    @default(now()) 
+  paymentProofUrl    String       
+}

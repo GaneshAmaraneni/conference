@@ -1,0 +1,86 @@
+.approve-attendee-container {
+  padding: 20px;
+  .heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .no-attendees {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+  }
+
+  .loading,
+  .error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff4d4d;
+  }
+
+  .attendee-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+    }
+
+    td {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .file-link {
+      color: #007bff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .approval-btn {
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+
+      &.approve-btn {
+        background-color: #28a745;
+        color: white;
+      }
+
+      &.disapprove-btn {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .no-user-info {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #888;
+      padding: 12px;
+      font-style: italic;
+    }
+  }
+}
